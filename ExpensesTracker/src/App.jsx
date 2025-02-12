@@ -1,20 +1,29 @@
 import React from 'react'
+import { useState } from 'react'
 import './App.css'
 
 function App() {
-  
+  const [input, setInput] = useState('')
+  const [budget, setBudget] = useState(0)
+
+
+  function addBudget() {
+    setBudget(input)
+    setInput('')
+  }
+
   return (
     <>
       <div>
         <div>
           <h1>Expenses Tracker</h1>
           <div>
-            <input type="text" placeholder='Enter Your Amount' />
-            <button>Set Budget</button>
+            <input type="number" placeholder='Enter Your Amount' value={input} onChange={(e) => setInput(e.target.value)} required />
+            <button onClick={addBudget}>Set Budget</button>
           </div>
 
           <div>
-            <h1>Total :- </h1>
+            <h1>Total :-  {budget}</h1>
             <h1>Spent :- </h1>
             <h1>Remain :- </h1>
           </div>
@@ -23,8 +32,8 @@ function App() {
         <div>
           <h1>Expenses</h1>
           <div>
-            <input type="text" placeholder='Enter Expense' />
-            <input type="text" placeholder='Enter Amount' />
+            <input type="text" placeholder='Enter Expense' required />
+            <input type="number" placeholder='Enter Amount' required />
             <button>Add Expense</button>
           </div>
 
