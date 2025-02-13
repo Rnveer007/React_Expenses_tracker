@@ -39,18 +39,18 @@ function App() {
   return (
     <>
       <div className='flex justify-center pt-36 bg-cyan-500 h-screen'>
-        <div>
+        <div className='border-2 w-[600px]'>
           <div>
-            <h1 className='text-3xl font-bold text-black-500 text-center my-4'>Expenses Tracker</h1>
-            <div>
+            <h1 className='text-3xl font-bold text-black-500 text-center my-6'>Expenses Tracker</h1>
+            <div className='text-center'>
               <input type="number" placeholder='Enter Your Amount' value={input} onChange={(e) => setInput(e.target.value)} required className='border-2 pl-4 py-1' />
               <button onClick={addBudget} className='border-2 border-amber-200 cursor-pointer py-1 ml-5 px-3'>Add Budget</button>
             </div>
 
-            <div>
-              <h1>Total :-  {budget}</h1>
-              <h1>Spent :- {SpentAmount} </h1>
-              <h1>Remain :- {remainAmount}</h1>
+            <div className='mt-5 mb-5'>
+              <h1 className='w-[150px] flex justify-between  m-auto '><strong>Total  :- </strong><span> {budget}</span></h1>
+              <h1 className='w-[150px] flex justify-between   m-auto my-3'><strong>Spent  :-</strong> <span>{SpentAmount}</span> </h1>
+              <h1 className='w-[150px] flex justify-between  m-auto '><strong>Remain :-</strong> <span>{remainAmount}</span></h1>
             </div>
           </div>
 
