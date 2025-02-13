@@ -10,8 +10,8 @@ function App() {
   const [expensesAmount, setExpensesAmount] = useState(0);
   const [remainAmount, setRemainAmount] = useState(0);
   const [count, setCount] = useState(0);
-  const [itemsInfo, setItemsInfo] = useState([])
-   
+  const [itemsInfo, setItemsInfo] = useState([]);
+
   function addBudget() {
     setBudget(input)
     setRemainAmount(input)
@@ -38,51 +38,53 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className='flex justify-center pt-36 bg-cyan-500 h-screen'>
         <div>
-          <h1>Expenses Tracker</h1>
           <div>
-            <input type="number" placeholder='Enter Your Amount' value={input} onChange={(e) => setInput(e.target.value)} required />
-            <button onClick={addBudget}>Set Budget</button>
+            <h1 className='text-3xl font-bold text-black-500 text-center my-4'>Expenses Tracker</h1>
+            <div>
+              <input type="number" placeholder='Enter Your Amount' value={input} onChange={(e) => setInput(e.target.value)} required className='border-2 pl-4 py-1' />
+              <button onClick={addBudget} className='border-2 border-amber-200 cursor-pointer py-1 ml-5 px-3'>Add Budget</button>
+            </div>
+
+            <div>
+              <h1>Total :-  {budget}</h1>
+              <h1>Spent :- {SpentAmount} </h1>
+              <h1>Remain :- {remainAmount}</h1>
+            </div>
           </div>
 
           <div>
-            <h1>Total :-  {budget}</h1>
-            <h1>Spent :- {SpentAmount} </h1>
-            <h1>Remain :- {remainAmount}</h1>
-          </div>
-        </div>
+            <h1>Expenses</h1>
+            <div>
+              <input type="text" placeholder='Enter Expense' value={expensesName} onChange={(e) => setExpensesName(e.target.value)} required />
+              <input type="number" placeholder='Enter Amount' value={expensesAmount} onChange={(e) => setExpensesAmount(e.target.value)} required />
+              <button onClick={userExpense}>Add Expense</button>
+            </div>
 
-        <div>
-          <h1>Expenses</h1>
-          <div>
-            <input type="text" placeholder='Enter Expense' value={expensesName} onChange={(e) => setExpensesName(e.target.value)} required />
-            <input type="number" placeholder='Enter Amount' value={expensesAmount} onChange={(e) => setExpensesAmount(e.target.value)} required />
-            <button onClick={userExpense}>Add Expense</button>
-          </div>
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>S.N.</th>
+                    <th>Expenses Name</th>
+                    <th>Expenses Amount</th>
+                  </tr>
+                </thead>
 
-          <div>
-            <table>
-              <thead>
-                <tr>
-                  <th>S.N.</th>
-                  <th>Expenses Name</th>
-                  <th>Expenses Amount</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                {
-                  itemsInfo.map((item, index) => {
-                    return <tr key={index}>
-                      <td> {item.count} </td>
-                      <td> {item.itemName} </td>
-                      <td> {item.kharcha} </td>
-                    </tr>
-                  })
-                }
-              </tbody>
-            </table>
+                <tbody>
+                  {
+                    itemsInfo.map((item, index) => {
+                      return <tr key={index}>
+                        <td> {item.count} </td>
+                        <td> {item.itemName} </td>
+                        <td> {item.kharcha} </td>
+                      </tr>
+                    })
+                  }
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
